@@ -1,0 +1,23 @@
+---
+import SiteLayout from "~/layouts/SiteLayout.astro";
+import { Separator } from "~/lib/components/ui/separator";
+
+const { frontmatter } = Astro.props;
+---
+
+<SiteLayout {frontmatter.title} {frontmatter.description}>
+  <main class="overflow-hidden max-w-3xl space-y-8 mx-auto">
+    <article class="prose prose-lg dark:prose-invert max-w-none">
+      <img
+        src={frontmatter.heroImage}
+        alt="hero image"
+        class="aspect-[16/9] w-full object-cover rounded-xl"
+      />
+      <div class="text-center font-mono"><h1>{frontmatter.title}</h1></div>
+      <Separator />
+      <section>
+        <slot />
+      </section>
+    </article>
+  </main>
+</SiteLayout>

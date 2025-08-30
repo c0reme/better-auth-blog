@@ -1,4 +1,8 @@
 {
-  "recommendations": ["astro-build.astro-vscode", "unifiedjs.vscode-mdx"],
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "unifiedjs.vscode-mdx",
+    "cweijan.vscode-database-client2"
+  ],
   "unwantedRecommendations": []
 }

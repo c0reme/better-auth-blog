@@ -1,0 +1,48 @@
+---
+import "~/styles/global.css";
+import { SEO } from "astro-seo";
+import Header from "~/lib/components/header.svelte";
+
+const defaults = {
+  name: "Astro Blog",
+  description: "Welcome to this multi-user blog!",
+} as const;
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: ImageMetadata;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <SEO
+      charset="UTF-8"
+      {title}
+      titleDefault={defaults.name}
+      titleTemplate={`%s | ${defaults.name}`}
+      description={description || defaults.description}
+      extend={{
+        meta: [
+          { name: "viewport", content: "width=device-width,initial-scale=1" },
+          { name: "generator", content: Astro.generator },
+        ],
+        link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+      }}
+    />
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme");
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const isDark = theme === "dark" || (theme === "auto" && systemDark);
+        if (isDark) document.documentElement.classList.add("dark");
+      })();
+    </script>
+  </head>
+  <body class="overflow-x-hidden">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "~/lib/components/header.svelte";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: ImageMetadata;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<BaseLayout {title} {description} {image}>
+  <Header client:only="svelte" />
+  <div class="m-2 md:mx-6 lg:mx-8">
+    <slot />
+  </div>
+</BaseLayout>
