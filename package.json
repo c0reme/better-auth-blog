@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "db:generate": "npx @better-auth/cli generate --output=src/db/auth-schema.ts --yes",
+    "db:generate": "mkdir db && npx @better-auth/cli generate --output=src/db/auth-schema.ts --yes",
     "drizzle:generate": "npx drizzle-kit generate",
     "drizzle:migrate": "npx drizzle-kit migrate"
   },
